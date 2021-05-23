@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ASP.NET_CoreWebApplicationPage.Models.Forum>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Posty</h1>
+<p>Tutaj możesz przeczytać najświeższe newsy z ASP.NET FanClub</p>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Stwórz nowe</a>
+</p>
+<table class="table" style ="width: 100%; border-collapse: collapse; border-spacing: 0; margin-bottom: 1%;">
+    <thead style ="background-color:#4CAF50; color:white;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Post)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style ="background-color: #ebebeb;">
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                
+                <div style="min-width:850px; display: -webkit-box; max-height: 75px; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                    @Html.DisplayFor(modelItem => item.Post)
+                </div>
+            </td>
+<td>
+    <center>
+        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-light">Więcej</a><br  />
+        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Usuń</a>
+    </center>           </td>
+        </tr>
+}
+    </tbody>
+</table>
+    

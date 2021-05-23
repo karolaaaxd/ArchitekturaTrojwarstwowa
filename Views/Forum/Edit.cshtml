@@ -1,0 +1,43 @@
+﻿@model ASP.NET_CoreWebApplicationPage.Models.Forum
+
+
+@{
+    ViewData["Title"] = "Edytuj";
+
+    var avocado = @Html.DisplayFor(model => model.Post);
+}
+
+            <h1>Edytuj</h1>
+
+
+            <hr />
+            <div class="row">
+
+                <div class="col-md-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label asp-for="Post" class="control-label"></label>
+                            <textarea asp-for="Post" class="form-control" style="width:720px; height:480px;"> @avocado </textarea>
+
+                            <span asp-validation-for="Post" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Zapisz" class="btn btn-primary" />
+                            <a asp-action="Index" class="btn btn-warning">Anuluj</a>
+                            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Usuń</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <div>
+
+            </div>
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+

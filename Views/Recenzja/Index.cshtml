@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ASP.NET_CoreWebApplicationPage.Models.Recenzja>
+
+@{
+    ViewData["Title"] = "Recenzje";
+}
+<style>
+
+
+
+.table td,th {
+font-size: 14px; border-top: 1px solid #ddd; padding: 5px 12px; text-align: left; vertical-align: top;
+}
+
+
+
+</style> 
+<h1>Recenzje</h1>
+<p>Tutaj dodawaj swoje recenzje na temat ASP.NET FanClub!</p>
+
+<p>
+    <a asp-action="Create"  class="btn btn-primary">Stwórz nowe</a>
+</p>
+<table class="table" style="width: 100%; border-collapse: collapse; border-spacing: 0; margin-bottom: 1%;">
+    <thead style="background-color:#4CAF50; color:white;">
+        <tr>
+        <th>
+            Użytkownik
+            </th>
+            <th>
+                Treść recenzji.
+            </th>
+            <th>
+                <center>
+                    @Html.DisplayNameFor(model => model.Ocena)
+                </center>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="background-color: #ebebeb;">
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nick)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecenzjaUzytkownika)
+            </td>
+            <td>
+                <center>
+                    @Html.DisplayFor(modelItem => item.Ocena)/5
+                </center>
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-info">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
